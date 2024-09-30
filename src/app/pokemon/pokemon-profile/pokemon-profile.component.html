@@ -14,9 +14,12 @@
                 <button class="btn btn-link text-decoration-none text-warning "routerLink="/pokemons">
             RETOUR
           </button>
-          <button class="btn btn-link text-decoration-none text-warning">
-            ÉDITER
-          </button><button class="btn btn-link text-decoration-none text-warning">
+          <button 
+    class="btn btn-link text-decoration-none text-warning"
+    [routerLink]="['/pokemons/edit', pokemon().id]"
+  >
+  ÉDITER
+  </button><button class="btn btn-link text-decoration-none text-warning">
             SUPPRIMER
           </button></div></div></div></div></div>
 </div>
