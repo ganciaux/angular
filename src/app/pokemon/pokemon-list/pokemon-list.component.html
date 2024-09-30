@@ -1,0 +1,55 @@
+<p>recherche</p>
+   <input (input)="pattern.set(searchInput.value)" #searchInput name="searchInput" [value]="pattern()">
+   <div class="container">
+    <div class="row">
+     @for(pokemon of pokemonsFilter(); track pokemon.id) {
+     <div class="col-md-4">
+      <div appPokemonBorder [pokemonType]="pokemon.types[0]" class="card mb-3 isActive">
+       <div class="row g-0">
+        <div 
+            class="col-md-4 d-flex align-items-center justify-content-center bg-light"
+            >
+         <img
+          class="img-fluid rounded-start"
+          [src]="pokemon.picture"
+          [alt]="pokemon.name"
+         />
+        </div>
+        <div class="col-md-8">
+         <div class="card-body">
+          <h5 class="card-title">{{ pokemon.name | reverse }}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+           Taille : {{ getsize(pokemon) }}
+          </h6>
+          <p class="card-text">Points de vie : {{ pokemon.life }}</p>
+          <p class="card-text">{{ pokemon.created | date:'dd-MM-YYYY'}}</p>
+          <div class="btn-group btn-group-sm" role="group">
+           <button
+            (click)="incrementLife(pokemon)"
+            class="btn btn-outline-secondary"
+            [disabled]="pokemon.life >= 30"
+           >
+            +
+           </button>
+           <button
+            (click)="decrementLife(pokemon)"
+            class="btn btn-outline-secondary"
+            [disabled]="pokemon.life <= 10"
+           >
+            -
+           </button>
+           <p class="card-text"><a 
+            class="text small text-muted"
+            [routerLink]="['/pokemons', pokemon.id]"
+          >
+          VOIR
+          </a></p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     }
+    </div>
+   </div>

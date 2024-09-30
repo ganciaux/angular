@@ -1,56 +1,7 @@
 <nav class="navbar bg-success mb-5">
-    <div class="container text-white justify-content-center">
-     <h1>Pokédex</h1>
-    </div>
-   </nav>
-   <p>recherche</p>
-   <input (input)="search($event)">
-   <div class="container">
-    <div class="row">
-     @for(pokemon of pokemonsFilter(); track pokemon.id) {
-     <div class="col-md-4">
-      <div appPokemonBorder [pokemonType]="pokemon.types[0]" class="card mb-3 isActive">
-       <div class="row g-0">
-        <div 
-            class="col-md-4 d-flex align-items-center justify-content-center bg-light"
-            >
-         <img
-          class="img-fluid rounded-start"
-          [src]="pokemon.picture"
-          [alt]="pokemon.name"
-         />
-        </div>
-        <div class="col-md-8">
-         <div class="card-body">
-          <h5 class="card-title">{{ pokemon.name | reverse }}</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">
-           Taille : {{ getsize(pokemon) }}
-          </h6>
-          <p class="card-text">Points de vie : {{ pokemon.life }}</p>
-          <p class="card-text">{{ pokemon.created | date:'dd-MM-YYYY'}}</p>
-          <div class="btn-group btn-group-sm" role="group">
-           <button
-            (click)="incrementLife(pokemon)"
-            class="btn btn-outline-secondary"
-            [disabled]="pokemon.life >= 30"
-           >
-            +
-           </button>
-           <button
-            (click)="decrementLife(pokemon)"
-            class="btn btn-outline-secondary"
-            [disabled]="pokemon.life <= 10"
-           >
-            -
-           </button>
-          </div>
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
-     }
-    </div>
-   </div>
+<div class="container text-white justify-content-center">
+    <h1 class="header-title" routerLink="/pokemons">Pokédex</h1>
+</div>
+</nav>
 
-<app-counter></app-counter>
+   <router-outlet></router-outlet>
