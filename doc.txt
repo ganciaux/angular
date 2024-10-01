@@ -1,0 +1,94 @@
+frameworks: Cadre de travail : travailler de manière plus efficace et de façon plus organisée: standardiser une manière de développer des opérations récurrentes dans un projet, entre plusieurs développeurs
+
+application web: Single Page Application: SPA: simple page HTML, qui contient suffisamment de JavaScript pour pouvoir fonctionner en autonomie une fois que le serveur l’a envoyé au client.
+ - incroyablement plus réactif: pas à recharger toute la page, remplacez le délai d’une requête au serveur par un traitement JavaScript
+ 
+Angular est un framework orienté composant
+
+Node.js permet d’exécuter du code JavaScript côté serveur.
+
+Npm permet d’installer et gérer les dépendances de paquets JavaScript
+
+npm install <nom_du_paquet>@<version>
+
+composant Angular doit au minimum importer l’annotation @Component.
+
+Le mot-clef export permet de rendre le composant accessible pour d’autres fichiers
+
+l’interpolation nous permet d’afficher du contenu dynamiquement à l’utilisateur, car dès que la valeur de la variable title sera modifiée, le template sera automatiquement mis à jour
+
+firebase login
+firebase login --reauth
+firebase init
+
+ng serve --open.
+ng build
+firebase deploy
+
+Définir un état : On définit un état pour le composant grâce à des propriétés. On parle de “State” du composant
+Afficher l’état : Dans le template du composant, on va déterminer les données du composant à afficher à l’utilisateur.  (binding)
+
+Implémenter un système de réactivité pour que le template d’une application web se mette à jour: La réactivité est simplement un mécanisme qui permet à l'interface utilisateur de se mettre à jour automatiquement en fonction des changements de données.
+
+Une réactivité “Value based” : dirty-checking: ous les nœuds du DOM (Contenu d’une page HTML) sont parcourus et chaque variable affichée dans la vue à l’utilisateur est vérifiée. Si la valeur de cette variable a changé depuis le précédent parcours, son nœud du DOM associé sera marqué comme “Dirty”
+La réactivité “Observable-based” : Les Observables définissent des flux de valeurs dans le temps, qui permettent aux frameworks de connaître en temps réel toute modification qui pourrait survenir.
+La réactivité “Signals-based” : réactive primitive.
+
+Un signal est essentiellement un conteneur pour une valeur, qui peut changer au fil du temps. Lorsque cette valeur change, le signal émet une nouvelle valeur, qui est alors propagée à tous les endroits de votre application qui écoutent ce signal
+
+La fonction computed permet de créer un signal dérivé à partir d'un ou plusieurs autres signals. Ce nouveau signal est en lecture seule (readonly) et sa valeur est calculée automatiquement à partir des signals dont il dépend. Chaque fois que l'un des signals sources change, le signal dérivé est recalculé.
+La fonction effect écouter les changements d'un signal et exécuter un code spécifique à ce moment-là
+
+1. Liaison de propriété
+On utilise les crochets pour lier directement la source de l’image à la propriété imageUrl du composant.
+<img [src]="imageUrl" />
+
+
+2. Liaison d’attribut
+On lie l’attribut for de la balise <label> à la propriété de notre composant name.
+<label [attr.for]="name">...</label>
+
+
+3. Liaison de classe
+Ajoute ou retire dynamiquement la classe special à l’élément <div>, en fonction de la condition isSpecial définie dans le composant. Cela peut être utile pour mettre en place certaines règles de style par exemple.
+<div [class.special]="isSpecial">Special</div>
+
+
+4. Liaison de style
+On peut également définir un style de manière dynamique. On définit la couleur de notre bouton en fonction de la propriété color du composant. Cependant, il est rare d’utiliser le composant et le template pour définir des règles de style. On passera plutôt par le fichier dédié d’un composant Angular xyz.component.css.
+<button [style.color]="color">Join</button>
+
+une directive est une classe Angular qui ressemble beaucoup à un composant, sauf qu’elle n’a pas de template @Directive
+Lorsque Angular trouve une directive dans un template HTML, il instancie la classe de la directive correspondante et donne à cette instance le contrôle sur la portion du DOM qui lui revient.
+Les composants
+Les directives d’attributs : Elles peuvent modifier le comportement des éléments HTML, des attributs, des propriétés et des composants
+Les directives structurelles : ces directives sont responsables de mettre en forme une certaine disposition d’éléments HTML, en ajoutant, retirant ou manipulant des éléments et leur fils
+
+ElementRef pour accéder à l'élément DOM natif.
+Renderer2 pour manipuler le DOM de manière sûre.
+ViewContainerRef pour manipuler les vues.
+TemplateRef pour travailler avec des templates.
+
+Service: @Injectable permet d’indiquer à Angular que ce service peut lui-même avoir d’autres dépendances et qu’il peut être injecté dans d’autres parties de l’application pour pouvoir être utilisé ailleurs
+providedIn: root, indiquer à Angular que ce sera la même instance du service qui sera fournie à travers toute l’application
+Constructeur : La méthode la plus courante. Utiliser private dans le constructeur pour injecter le service.
+Providers : Définir le service dans le tableau providers d'un composant pour créer une instance unique.
+@Inject() : Utilisé pour des scénarios spécifiques, surtout avec des tokens.
+inject() : Nouvelle méthode d'injection introduite dans Angular 14, permettant d'injecter des services dans des méthodes.
+
+L’injection de dépendances est un modèle de développement (ou design pattern pour nos amis anglo-saxons), dans lequel chaque classe reçoit ses dépendances d’une source externe plutôt qu’en les créant elle-même.
+
+On ne gère jamais nous-mêmes les dépendances d’un composant ou d’un service. Il faut toujours passer par le mécanisme d’injection de dépendances proposé par Angular.
+
+L'utilisation de RouterLink au lieu de href est recommandée dans une application Angular, car cela permet à Angular de gérer la navigation en interne, ce qui améliore les performances et évite le rechargement complet de la page. 
+RouterLink permet de bénéficier de fonctionnalités avancées de navigation proposées par Angular, comme les Guards et les Resolvers
+- Sans le slash ("/"), le chemin est relatif à la route actuelle.
+- Avec le slash ("/"), le chemin est absolu et part de la racine de l'application.
+
+Angular simule la navigation de l’utilisateur auprès du navigateur
+
+relier le formulaire HTML au formulaire piloté par le modèle défini dans le composant TypeScript: <form [formGroup]="form">
+la directive formControlName pour relier un champ du formulaire avec une instance de FormControl
+
+[disabled]="pokemonLife.value >= POKEMON_RULES().MAX_LIFE"
+[disabled]="foo()" => Angular ne sait pas d'avance ce que cette fonction retourne ni quelles valeurs la fonction utilise en interne donc appelée à chaque cycle de détection de changement
