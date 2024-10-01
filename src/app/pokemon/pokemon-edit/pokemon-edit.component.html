@@ -11,7 +11,7 @@
           />
         </div>
         <div class="col-md-8">
-          <form [formGroup]="form">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="card-body">
               <h2 class="card-title">{{ pokemon().name }}</h2>
               <table class="table">
@@ -68,20 +68,33 @@
                   <tr>
                     <th scope="row">Types</th>
                     <td>
+                      @for(type of pokemonTypeList.controls; track type; let index = $index) {
+                      <button
+                        type="button"
+                        class="btn btn-secondary btn-sm rounded-pill m-1"
+                        (click)="pokemonTypeList.removeAt(index)"
+                        [style.backgroundColor]="getPokemonColor(type.value)"
+                        [style.color]="type.value === 'Electrik' ? 'black' : 'white'"
+                      >
+                        {{ type.value }} <span 
+                        class="badge"
+                        [style.color]="type.value === 'Electrik' ? 'black' : 'white'"
+                        >x</span>
+                      </button>
+                      }
                       <div class="row mt-3">
-                        @for(type of pokemonService.getPokemonTypeList(); track
-                        type) {
+                        @for(type of pokemonService.getPokemonTypeList(); track type) {
                         <div class="col-md-4">
                           <div class="form-check">
                             <input
-                              class="form-check-input"
-                              type="checkbox"
+                              #checkbox
+                              class="form-check-input"type="checkbox"
+                              [checked]="isPokemonTypeSelected(type)"
+                              (change)="onPokemonTypeChange(type, checkbox.checked)"
                               [value]="type"
                               [id]="type"
                             />
-                            <label class="form-check-label" [for]="type">
-                              {{ type }}
-                            </label>
+                            <label class="form-check-label" [for]="type"> {{ type }} </label>
                           </div>
                         </div>
                         }
@@ -110,3 +123,4 @@
       </div>
     </div>
   </div>
+  <pre>{{ form.value| json }}</pre>
