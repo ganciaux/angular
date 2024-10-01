@@ -19,6 +19,7 @@ export class PokemonEditComponent {
   readonly pokemon = signal(
     this.pokemonService.getPokemonById(this.pokemonId)
   ).asReadonly();
+  readonly POKEMON_RULES = signal(POKEMON_RULES).asReadonly();
 
   readonly form = new FormGroup({
     name: new FormControl(this.pokemon().name, [
@@ -30,7 +31,11 @@ export class PokemonEditComponent {
     life: new FormControl(this.pokemon().life),
     damage: new FormControl(this.pokemon().damage),
     types: new FormArray(
-      this.pokemon().types.map((type) => new FormControl(type))
+      this.pokemon().types.map((type) => new FormControl(type)),
+      [
+        Validators.required, 
+        Validators.maxLength(POKEMON_RULES.MAX_TYPES)
+      ]
     ),
   });
 
@@ -63,6 +68,37 @@ onPokemonTypeChange(type: string, isChecked: boolean): void {
 
 getPokemonColor(type: string) {
   return getPokemonColor(type);
+}
+get pokemonName() {
+  return this.form.get('name') as FormControl;
+}
+
+get pokemonLife() {
+  return this.form.get('life') as FormControl;
+}
+
+get pokemonDamage() {
+  return this.form.get('damage') as FormControl;
+}
+
+incrementDamage() {
+  const newValue = this.pokemonDamage.value + 1;
+  this.pokemonDamage.setValue(newValue);
+}
+
+decrementDamage() {
+  const newValue = this.pokemonDamage.value - 1;
+  this.pokemonDamage.setValue(newValue);
+}
+
+incrementLife() {
+  const newValue = this.pokemonLife.value + 1;
+  this.pokemonLife.setValue(newValue);
+}
+
+decrementLife() {
+  const newValue = this.pokemonLife.value - 1;
+  this.pokemonLife.setValue(newValue);
 }
 
 onSubmit() {
