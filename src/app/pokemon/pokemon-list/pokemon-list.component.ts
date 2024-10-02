@@ -6,6 +6,7 @@ import { PokemonBorderDirective } from '../../pokemon-border.directive';
 import { ReversePipe } from '../../reverse.pipe';
 import { PokemonService } from '../../pokemon.service';
 import { RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 
 @Component({
@@ -23,17 +24,31 @@ import { RouterLink } from '@angular/router';
 })
 export class PokemonListComponent {
   private readonly pokemonService = inject(PokemonService);
-  pokemons = signal(this.pokemonService.getPokemonList());
+  readonly pokemons = signal(this.pokemonService.getPokemonList());
+  /*
+  readonly pokemonList = toSignal(this.pokemonService.getPokemonListEx(), {
+    initialValue: [],
+  });
+  */
+ // Emit "undefined" and after the array.
+ readonly pokemonList = toSignal(this.pokemonService.getPokemonListEx());
+
+  // Emit if resquest is running or not.
+  readonly loading = computed(() => {
+    console.log("loading:", !this.pokemonList())
+    return !this.pokemonList()}
+  );
+
   pattern= signal('');
   pokemonsFilter = computed(()=>{
     if (this.pattern().length==0){
-      return this.pokemons();
+      return this.pokemonList();
     } else {
       console.log('computed:', this.pattern())
-      return this.pokemons().filter((p)=>{
-        console.log(p.name)
-        return p.name.toLowerCase().startsWith(this.pattern().toLocaleLowerCase())}
-      )
+        return this.pokemonList()?.filter((p)=>{
+          console.log(p.name)
+          return p.name.toLowerCase().startsWith(this.pattern().toLocaleLowerCase())}
+        )
     }
   })
   isActive=true;

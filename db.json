@@ -5,7 +5,7 @@
         "name": "Bulbizarre",
         "life": 25,
         "damage": 5,
-        "picture": "<https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png>",
+        "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png",
         "types": ["Plante", "Poison"],
         "created": "2024-08-16T00:00:00Z"
       },
@@ -14,7 +14,7 @@
         "name": "Salamèche",
         "life": 28,
         "damage": 6,
-        "picture": "<https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png>",
+        "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png",
         "types": ["Feu"],
         "created": "2024-08-16T00:00:00Z"
       },
@@ -23,7 +23,7 @@
         "name": "Carapuce",
         "life": 21,
         "damage": 4,
-        "picture": "<https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png>",
+        "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png",
         "types": ["Eau"],
         "created": "2024-08-16T00:00:00Z"
       },
@@ -32,7 +32,7 @@
         "name": "Aspicot",
         "life": 16,
         "damage": 2,
-        "picture": "<https://assets.pokemon.com/assets/cms2/img/pokedex/detail/013.png>",
+        "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/013.png",
         "types": ["Insecte", "Poison"],
         "created": "2024-08-16T00:00:00Z"
       },
@@ -41,7 +41,7 @@
         "name": "Roucool",
         "life": 30,
         "damage": 7,
-        "picture": "<https://assets.pokemon.com/assets/cms2/img/pokedex/detail/016.png>",
+        "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/016.png",
         "types": ["Normal", "Vol"],
         "created": "2024-08-16T00:00:00Z"
       },
@@ -50,7 +50,7 @@
         "name": "Rattata",
         "life": 18,
         "damage": 6,
-        "picture": "<https://assets.pokemon.com/assets/cms2/img/pokedex/detail/019.png>",
+        "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/019.png",
         "types": ["Normal"],
         "created": "2024-08-16T00:00:00Z"
       },
@@ -59,7 +59,7 @@
         "name": "Piafabec",
         "life": 14,
         "damage": 5,
-        "picture": "<https://assets.pokemon.com/assets/cms2/img/pokedex/detail/021.png>",
+        "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/021.png",
         "types": ["Normal", "Vol"],
         "created": "2024-08-16T00:00:00Z"
       },
@@ -68,7 +68,7 @@
         "name": "Abo",
         "life": 16,
         "damage": 4,
-        "picture": "<https://assets.pokemon.com/assets/cms2/img/pokedex/detail/023.png>",
+        "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/023.png",
         "types": ["Poison"],
         "created": "2024-08-16T00:00:00Z"
       },
@@ -77,7 +77,7 @@
         "name": "Pikachu",
         "life": 21,
         "damage": 7,
-        "picture": "<https://assets.pokemon.com/assets/cms2/img/pokedex/detail/025.png>",
+        "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/025.png",
         "types": ["Electrik"],
         "created": "2024-08-16T00:00:00Z"
       },
@@ -86,7 +86,7 @@
         "name": "Sabelette",
         "life": 19,
         "damage": 3,
-        "picture": "<https://assets.pokemon.com/assets/cms2/img/pokedex/detail/027.png>",
+        "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/027.png",
         "types": ["Normal"],
         "created": "2024-08-16T00:00:00Z"
       },
@@ -95,7 +95,7 @@
         "name": "Mélofée",
         "life": 25,
         "damage": 5,
-        "picture": "<https://assets.pokemon.com/assets/cms2/img/pokedex/detail/035.png>",
+        "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/035.png",
         "types": ["Fée"],
         "created": "2024-08-16T00:00:00Z"
       },
@@ -104,7 +104,7 @@
         "name": "Groupix",
         "life": 17,
         "damage": 8,
-        "picture": "<https://assets.pokemon.com/assets/cms2/img/pokedex/detail/037.png>",
+        "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/037.png",
         "types": ["Feu"],
         "created": "2024-08-16T00:00:00Z"
       }
