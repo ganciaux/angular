@@ -13,7 +13,13 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CounterComponent, CommonModule, PokemonBorderDirective, DatePipe, ReversePipe, RouterLink],
   templateUrl: './pokemon-list.component.html',
-  styles: ``
+  styles: [
+    `
+      .pokemon-card {
+        cursor: pointer;
+      }
+    `,
+  ],
 })
 export class PokemonListComponent {
   private readonly pokemonService = inject(PokemonService);
@@ -58,12 +64,4 @@ export class PokemonListComponent {
     return 'Moyen';
   }
 
-  decrementLife(pokemon: Pokemon) {
-  pokemon.life-=1
-  this.isActive=false;
-}
-incrementLife(pokemon: Pokemon) {
-  pokemon.life+=1
-  this.isActive=true;
-}
 }

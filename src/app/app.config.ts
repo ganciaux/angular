@@ -4,6 +4,7 @@ import { PokemonListComponent } from './pokemon/pokemon-list/pokemon-list.compon
 import { PokemonProfileComponent } from './pokemon/pokemon-profile/pokemon-profile.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PokemonEditComponent } from './pokemon/pokemon-edit/pokemon-edit.component';
+import { provideHttpClient } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -18,5 +19,7 @@ const routes: Routes = [
 ];
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }),  provideRouter(routes)]
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+      provideRouter(routes),
+      provideHttpClient()]
 };

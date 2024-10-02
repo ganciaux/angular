@@ -92,3 +92,57 @@ la directive formControlName pour relier un champ du formulaire avec une instanc
 
 [disabled]="pokemonLife.value >= POKEMON_RULES().MAX_LIFE"
 [disabled]="foo()" => Angular ne sait pas d'avance ce que cette fonction retourne ni quelles valeurs la fonction utilise en interne donc appelée à chaque cycle de détection de changement
+
+Programmation réactive = Programmation avec des flux
+Lorsqu’on s’abonne à un flux pour récupérer ses données éventuelles, on dit que l’on s’abonne au flux.
+Dans RxJS, un flux de données est représenté par un objet appelé Observable.
+Un observable RxJS est un objet qui permet de produire une série de valeurs asynchrones au
+
+Un Observer est un simple objet JavaScript avec 3 propriétés :
+next : Une fonction pour traiter les différentes valeurs émises par l’Observable (un nombre, des tableaux, des objets, etc.)
+error : Une fonction pour traiter le cas d’erreur.
+complete : Une fonction pour traiter le signal de « fin ».
+
+Par convention, on suffixe les Observables par “$”
+Il faut s’abonner à un Observable et lui passer un Observer en paramètre grâce à la méthode subscribe, pour que du code soit réellement exécuté.
+
+const subscription = observable$.subscribe(observer);
+subscription.unsubscribe();
+
+un Observable n’est pas quelque chose à usage unique : il continuera d’émettre des événements jusqu'à ce qu'il émette une notification d’erreur, de terminaison ou que l’on s’en désabonne. Alors qu’une promesse ne peut gérer qu’un traitement asynchrone à la fois, et qu’une fois en cours, il n’est plus annulable…
+
+avec par exemple observer = {
+  next: (value) => console.log('Je regarde : ' + value),
+  error: (err) => console.error('Erreur : ' + err),
+  complete: () => console.log('Saison finie !')
+}
+
+// Observable = Netflix
+const netflix$ = new Observable(subscriber => {
+  subscriber.next('Episode 1');
+  setTimeout(() => subscriber.next('Episode 2'), 1000);
+  setTimeout(() => {
+    subscriber.next('Episode 3');
+    subscriber.complete();
+  }, 2000);
+});
+
+// Observer = Vous
+const subscription = netflix$.subscribe({
+  next: (value) => console.log('Je regarde : ' + value),
+  error: (err) => console.error('Erreur : ' + err),
+  complete: () => console.log('Saison finie !')
+});
+
+// Pensez à vous désabonner de Netflix...
+// si vous ne regardez plus rien ! 💸
+subscription.unsubscribe()
+
+utilisation des routes et du module http
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideHttpClient(),
+  ],
+};
