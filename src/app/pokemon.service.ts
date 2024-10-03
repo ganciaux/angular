@@ -34,6 +34,18 @@ export class PokemonService {
     return pokemon;
   }
 
+  getPokemonByIdEx(id: number): Observable<Pokemon> {
+    return this.http.get<Pokemon>(`${this.POKEMON_API_URL}/${id}`);
+  }
+
+  updatePokemon(pokemon: Pokemon): Observable<Pokemon> {
+    return this.http.put<Pokemon>(`${this.POKEMON_API_URL}/${pokemon.id}`, pokemon);
+  }
+
+  deletePokemon(pokemonId: number): Observable<void> {
+    return this.http.delete<void>(`${this.POKEMON_API_URL}/${pokemonId}`);
+  }
+  
   // Retourne la liste des types valides pour un pokémon.
 
   getPokemonTypeList(): string[] {
